@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {withStyles} from '@material-ui/core/styles';
 
+import TaxCalculator from '../../features/taxCalculator'
+
 import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
@@ -11,9 +13,12 @@ const styles = theme => ({
 });
 
 const UserLandingPage = ({ classes, signedInUser }) => (
-	<Typography variant={'h3'} className={classes.h2}>
-		Hello, {signedInUser.displayName}!
-	</Typography>
+	<div>
+		<Typography variant={'h3'} className={classes.h2}>
+			Hello, {signedInUser.displayName}!
+		</Typography>
+		<TaxCalculator />
+	</div>
 );
 
 const mapStateToProps = state => ({
