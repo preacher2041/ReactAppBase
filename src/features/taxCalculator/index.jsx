@@ -1,7 +1,8 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 
-import SubmitInvoice from './submitInvoice';
+import SubmitInvoiceDialog from './submitInvoiceDialog';
+import TaxTable from './taxTable';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -47,7 +48,8 @@ class taxCalculator extends React.Component {
 					onClick={() => this.handleClickOpen()}>
 					Create new invoice
 				</Button>
-				<SubmitInvoice openState={this.state.open} handleClose={this.handleClose}/>
+				<SubmitInvoiceDialog openState={this.state.open} handleClose={this.handleClose}/>
+				<TaxTable/>
 			</div>
 		)
 	}
