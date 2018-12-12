@@ -96,12 +96,12 @@ class submitInvoice extends React.Component {
 	};
 
 	render() {
-		const {classes} = this.props;
+		const {classes, openState, handleClose} = this.props;
 
 		return (
 			<Dialog
-				open={this.state.open}
-				onClose={this.handleClose}
+				open={openState}
+				onClose={handleClose}
 				aria-labelledby="form-dialog-title"
 			>
 				<DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
@@ -165,10 +165,10 @@ class submitInvoice extends React.Component {
 					</form>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={this.handleClose} color="primary">
+					<Button onClick={handleClose} color="primary">
 						Cancel
 					</Button>
-					<Button onClick={this.handleClose} color="primary">
+					<Button onClick={handleClose} color="primary">
 						Subscribe
 					</Button>
 				</DialogActions>

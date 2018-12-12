@@ -19,23 +19,20 @@ class taxCalculator extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			numChildren: 0
+			open: false,
 		}
 	}
 
-	onAddChild() {
-		this.setState({
-			numChildren: this.state.numChildren + 1
-		});
-	}
+	handleClickOpen = () => {
+		this.setState({ open: true });
+	};
+
+	handleClose = () => {
+		this.setState({ open: false });
+	};
+
 
 	render() {
-		const children = [];
-
-		for (let i = 0; i < this.state.numChildren; i += 1) {
-			children.push(<SubmitInvoice key={i} number={i} />);
-		}
-
 		const {classes } = this.props;
 
 		return (
@@ -47,10 +44,10 @@ class taxCalculator extends React.Component {
 					className={classes.button}
 					variant='contained'
 					color='secondary'
-					onClick={() => this.onAddChild()}>
+					onClick={() => this.handleClickOpen()}>
 					Create new invoice
 				</Button>
-				{children}
+				<SubmitInvoice openState={this.state.open} handleClose={this.handleClose}/>
 			</div>
 		)
 	}
