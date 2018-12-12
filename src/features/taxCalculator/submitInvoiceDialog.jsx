@@ -13,10 +13,27 @@ import TextField from '@material-ui/core/TextField';
 const styles = theme => ({
 	h5: {
 		margin: theme.spacing.unit
+	},
+	form: {
+		[theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+			width: 400,
+			marginLeft: 'auto',
+			marginRight: 'auto'
+		},
+		marginTop: theme.spacing.unit,
+		marginBottom: theme.spacing.unit
+	},
+	textField: {
+		marginTop: theme.spacing.unit,
+		marginBottom: theme.spacing.unit
+	},
+	button: {
+		marginTop: theme.spacing.unit,
+		marginBottom: theme.spacing.unit
 	}
 });
 
-class submitInvoice extends React.Component {
+class submitInvoiceDialog extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -58,7 +75,10 @@ class submitInvoice extends React.Component {
 	};
 
 	calculateInvoice = () => {
+		const {handleClose} = this.props;
 		const invoiceTotal = this.state.daysWorked * this.state.dayRate;
+
+		handleClose();
 
 		this.setState({
 			invoiceTotal
@@ -104,19 +124,18 @@ class submitInvoice extends React.Component {
 				onClose={handleClose}
 				aria-labelledby="form-dialog-title"
 			>
-				<DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+				<DialogTitle id="form-dialog-title">Enter invoice details</DialogTitle>
 				<DialogContent>
 					<DialogContentText>
-						To subscribe to this website, please enter your email address here. We will send
-						updates occasionally.
+						Please fill out the form below to work your corporation tax and personal tax contributions
 					</DialogContentText>
 					<form className={classes.form}>
 						<TextField
 							required
+							fullWidth
 							id="date"
 							label="Date worked"
 							type="date"
-							defaultValue="2017-05-24"
 							className={classes.textField}
 							InputLabelProps={{
 								shrink: true,
@@ -125,10 +144,10 @@ class submitInvoice extends React.Component {
 						/>
 						<TextField
 							required
+							fullWidth
 							id="date"
-							label="Invoice Date"
+							label="Invoice date"
 							type="date"
-							defaultValue="2017-05-24"
 							className={classes.textField}
 							InputLabelProps={{
 								shrink: true,
@@ -137,39 +156,40 @@ class submitInvoice extends React.Component {
 						/>
 						<TextField
 							required
+							fullWidth
 							className={classes.textField}
 							variant='outlined'
 							color='inherit'
-							label='Days Worked'
+							label='Number of days worked'
 							type='number'
 							name='text1'
 							onChange={this.updateDaysWorked}
 						/>
 						<TextField
 							required
+							fullWidth
 							className={classes.textField}
 							variant='outlined'
 							color='inherit'
-							label='Day Rate'
+							label='Day rate'
 							type='number'
 							name='text2'
 							onChange={this.updateDayRate}
 						/>
-						<Button
-							className={classes.button}
-							variant='contained'
-							color='secondary'
-							onClick={this.calculateInvoice}>
-							Submit
-						</Button>
 					</form>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleClose} color="primary">
+					<Button
+						variant='contained'
+						color="primary"
+						onClick={handleClose}>
 						Cancel
 					</Button>
-					<Button onClick={handleClose} color="primary">
-						Subscribe
+					<Button
+						variant='contained'
+						color='secondary'
+						onClick={this.calculateInvoice}>
+						Submit
 					</Button>
 				</DialogActions>
 			</Dialog>
@@ -177,4 +197,4 @@ class submitInvoice extends React.Component {
 	}
 }
 
-export default withStyles(styles)(submitInvoice);
+export default withStyles(styles)(submitInvoiceDialog);
