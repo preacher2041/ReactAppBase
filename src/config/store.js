@@ -5,7 +5,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
 import rootSaga from './sagas';
 
-const composedEnhancers = composeWithDevTools;
+const composedEnhancers = composeWithDevTools({
+	trace: true,
+	traceLimit: 25
+});
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
 	rootReducer,

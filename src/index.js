@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import App from './App';
+import App from './components/app';
 import store from './config/store';
 
 const theme = createMuiTheme({
@@ -19,15 +19,15 @@ const theme = createMuiTheme({
 			default: '#fafafa'
 		},
 		primary: {
-			light: 'rgba(72, 72, 72, 1)',
-			main: 'rgba(33, 33, 33, 1)',
-			dark: 'rgba(0, 0, 0, 1)',
+			light: '#c54949',
+			main: '#b71c1c',
+			dark: '#801313',
 			contrastText: '#fff'
 		},
 		secondary: {
-			light: 'rgba(255, 81, 49, 1)',
-			main: 'rgba(213, 0, 0, 1)',
-			dark: 'rgba(155, 0, 0, 1)',
+			light: '#86b25f',
+			main: '#689f38',
+			dark: '#486f27',
 			contrastText: '#fff'
 		},
 		error: {
@@ -44,8 +44,21 @@ const theme = createMuiTheme({
 		}
 	},
 	typography: {
-		useNextVariants: true
-	}
+		useNextVariants: true,
+		fontFamily: [
+			'hack',
+			'-apple-system',
+			'BlinkMacSystemFont',
+			'"Segoe UI"',
+			'Roboto',
+			'"Helvetica Neue"',
+			'Arial',
+			'sans-serif',
+			'"Apple Color Emoji"',
+			'"Segoe UI Emoji"',
+			'"Segoe UI Symbol"',
+		].join(','),
+	},
 });
 
 const app = <Provider store={store}>
