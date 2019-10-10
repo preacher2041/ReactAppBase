@@ -1,0 +1,1 @@
+export {default} from './sign-in-register-tabs-redux';
