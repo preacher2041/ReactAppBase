@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import userAuthenticatiomReducer from '../components/user-authentication/store/reducer';
+import formsReducer from '../components/utils/forms';
 
 export default combineReducers({
-	userAuthentication: userAuthenticatiomReducer
+	forms: formsReducer
 });

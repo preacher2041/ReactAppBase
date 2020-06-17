@@ -1,10 +1,6 @@
 import { all, fork } from 'redux-saga/effects';
-import userAuthenticationSaga from '../components/user-authentication/store/sagas';
+import formSaga from '../components/utils/forms';
 
-export default function* rootSaga () {
-	yield all([
-		fork(
-			userAuthenticationSaga
-		),
-	]);
+export default function* rootSaga() {
+	yield all([fork(formSaga)]);
 }
