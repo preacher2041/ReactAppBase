@@ -1,24 +1,57 @@
+import { cloneDeep } from 'lodash';
 import actionTypes from './formTypes';
 
 const initialState = {};
-const formsReducer = (state = initialState, action) => {
+
+const createFormState = ({ formId, initialFields }) => ({
+	[formId]: {
+		id: formId,
+		fields: initialFields,
+		fieldsSaved: initialFields
+	}
+});
+
+const getFormData = ({ form, state }) => cloneDeep(state[form] || {});
+
+const formsReducer = (state = initialState, action = {}) => {
 	const { type, payload = {} } = action;
 
 	switch (type) {
 		case actionTypes.CREATE_FORM: {
-			console.log('create form', payload);
-			return state;
+			const { form, fields } = payload;
+			const formData = createFormState({
+				formId: form,
+				initialFields: fields
+			});
+			return {
+				...state,
+				...formData
+			};
 		}
 		case actionTypes.UPDATE_FORM_FIELD: {
-			console.log('update form', payload);
-			return state;
+			const { form } = payload;
+			const formData = getFormData({ state, form });
+
+			if (payload.field) {
+				const { field, value } = payload;
+
+				formData.fields = {
+					...formData.fields,
+					[field]: value
+				};
+			}
+
+			return {
+				...state,
+				[form]: {
+					...formData
+				}
+			};
 		}
 		case actionTypes.RESET_FORM: {
-			console.log('reset form', payload);
 			return state;
 		}
 		case actionTypes.SUBMIT_FORM: {
-			console.log('submit form', payload);
 			return state;
 		}
 		default:

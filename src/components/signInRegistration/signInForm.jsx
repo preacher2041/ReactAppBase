@@ -6,7 +6,7 @@ import { Button, TextField, Typography } from '@material-ui/core';
 import formComponent from '../utils/forms/formComponent';
 import { signInFormConfig } from './signInRegistrationFormConfig';
 
-const UserSignInView = ({ classes, updateField, resetForm, submitForm }) => {
+const signInForm = ({ classes, updateField, resetForm, submitForm }) => {
 	const handleOnChange = (event) => {
 		const field = event.target.name;
 		const value = event.target.value;
@@ -31,20 +31,17 @@ const UserSignInView = ({ classes, updateField, resetForm, submitForm }) => {
 
 	return (
 		<form className={classes.form}>
-			<Typography
-				component="h3"
-				variant="h3"
-				className={classes.loginNotice}>
+			<Typography component="h3" variant="h3" className={classes.loginNotice}>
 				Welcome, please login below
 			</Typography>
 			<TextField
 				className={classes.textField}
 				fullWidth
 				variant="outlined"
-				color="inherit"
+				color="primary"
 				label="Email"
 				type="email"
-				name="email"
+				name="signInEmail"
 				onChange={handleOnChange}
 				onKeyUp={handleOnKeyUp}
 			/>
@@ -52,23 +49,18 @@ const UserSignInView = ({ classes, updateField, resetForm, submitForm }) => {
 				className={classes.textField}
 				fullWidth
 				variant="outlined"
-				color="inherit"
+				color="primary"
 				label="Password"
 				type="password"
-				name="password"
+				name="signInPassword"
 				onChange={handleOnChange}
 				onKeyUp={handleOnKeyUp}
 			/>
 			<div className={classes.formButtons}>
-				<Button
-					variant="contained"
-					color="secondary"
-					onClick={handleOnClick}>
+				<Button variant="contained" color="secondary" onClick={handleOnClick}>
 					Sign in
 				</Button>
-				<Button
-					className={classes.forgottenPasswordButton}
-					color="secondary">
+				<Button className={classes.forgottenPasswordButton} color="secondary">
 					Forgotten password?
 				</Button>
 			</div>
@@ -76,6 +68,4 @@ const UserSignInView = ({ classes, updateField, resetForm, submitForm }) => {
 	);
 };
 
-export default withStyles(styles)(
-	formComponent(signInFormConfig)(UserSignInView)
-);
+export default withStyles(styles)(formComponent(signInFormConfig)(signInForm));

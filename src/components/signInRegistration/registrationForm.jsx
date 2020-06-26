@@ -8,12 +8,9 @@ import { Typography } from '@material-ui/core';
 import formComponent from '../utils/forms/formComponent';
 import { registrationFormConfig } from './signInRegistrationFormConfig';
 
-const UserRegistrationView = ({
-	classes,
-	updateField,
-	resetForm,
-	submitForm
-}) => {
+const registrationForm = ({ classes, updateField, resetForm, submitForm, formFields }) => {
+	const { registrationEmail, registrationPassword } = formFields;
+
 	const handleOnChange = (event) => {
 		const field = event.target.name;
 		const value = event.target.value;
@@ -37,11 +34,8 @@ const UserRegistrationView = ({
 	};
 
 	return (
-		<form className={classes.form}>
-			<Typography
-				component="h3"
-				variant="h3"
-				className={classes.registerNotice}>
+		<>
+			<Typography component="h3" variant="h3" className={classes.registerNotice}>
 				Welcome, please register below
 			</Typography>
 			<TextField
@@ -49,10 +43,11 @@ const UserRegistrationView = ({
 				className={classes.textField}
 				fullWidth
 				variant="outlined"
-				color="inherit"
+				color="primary"
 				label="Email"
 				type="email"
-				name="email"
+				name="registrationEmail"
+				value={registrationEmail || ''}
 				onChange={handleOnChange}
 				onKeyUp={handleOnKeyUp}
 			/>
@@ -61,10 +56,11 @@ const UserRegistrationView = ({
 				className={classes.textField}
 				fullWidth
 				variant="outlined"
-				color="inherit"
+				color="primary"
 				label="Password"
 				type="password"
-				name="password"
+				name="registrationPassword"
+				value={registrationPassword || ''}
 				onChange={handleOnChange}
 				onKeyUp={handleOnKeyUp}
 			/>
@@ -78,10 +74,8 @@ const UserRegistrationView = ({
 					Create your account
 				</Button>
 			</div>
-		</form>
+		</>
 	);
 };
 
-export default withStyles(styles)(
-	formComponent(registrationFormConfig)(UserRegistrationView)
-);
+export default withStyles(styles)(formComponent(registrationFormConfig)(registrationForm));
