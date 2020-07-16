@@ -43,7 +43,6 @@ const registrationForm = ({ classes, updateField, resetForm, submitForm, formFie
 				className={classes.textField}
 				fullWidth
 				variant="outlined"
-				color="primary"
 				label="Email"
 				type="email"
 				name="registrationEmail"
@@ -56,7 +55,6 @@ const registrationForm = ({ classes, updateField, resetForm, submitForm, formFie
 				className={classes.textField}
 				fullWidth
 				variant="outlined"
-				color="primary"
 				label="Password"
 				type="password"
 				name="registrationPassword"

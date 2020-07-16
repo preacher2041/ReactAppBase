@@ -38,7 +38,6 @@ const signInForm = ({ classes, updateField, resetForm, submitForm }) => {
 				className={classes.textField}
 				fullWidth
 				variant="outlined"
-				color="primary"
 				label="Email"
 				type="email"
 				name="signInEmail"
@@ -49,7 +48,6 @@ const signInForm = ({ classes, updateField, resetForm, submitForm }) => {
 				className={classes.textField}
 				fullWidth
 				variant="outlined"
-				color="primary"
 				label="Password"
 				type="password"
 				name="signInPassword"
