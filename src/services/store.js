@@ -1,9 +1,9 @@
 import { applyMiddleware, createStore } from 'redux';
-import createSagaMiddleware from 'redux-saga'
+import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import rootReducer from './rootReducer';
-import rootSaga from './sagas';
+import rootReducer from './reducers';
+import sagas from './sagas';
 
 const composedEnhancers = composeWithDevTools({
 	trace: true,
@@ -22,18 +22,16 @@ const addLoggingToDispatch = (store) => {
 		console.log('next state', store.getState());
 		console.groupEnd(action.type);
 		return returnValue;
-	}
+	};
 };
 
-const store = createStore (
+const store = createStore(
 	rootReducer,
-	composedEnhancers(
-		applyMiddleware(sagaMiddleware),
-	)
+	composedEnhancers(applyMiddleware(sagaMiddleware))
 );
 
 store.dispatch = addLoggingToDispatch(store);
 
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(sagas);
 
 export default store;

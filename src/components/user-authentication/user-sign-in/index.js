@@ -1,1 +1,1 @@
-export {default} from './user-sign-in-redux';
+export { default } from './user-sign-in-container';

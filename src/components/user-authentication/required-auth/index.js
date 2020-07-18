@@ -1,1 +1,1 @@
-export {default} from './required-auth-redux';
+export { default } from './required-auth-container';

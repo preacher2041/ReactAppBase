@@ -1,1 +1,1 @@
-export {default} from './nav-bar-redux';
+export { default } from './nav-bar-container';

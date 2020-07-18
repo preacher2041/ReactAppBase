@@ -1,1 +1,1 @@
-export {default} from './sign-in-register-tabs-redux';
+export { default } from './sign-in-register-tabs-container';

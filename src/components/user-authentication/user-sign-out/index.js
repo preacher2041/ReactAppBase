@@ -1,1 +1,1 @@
-export {default} from './user-sign-out-redux';
+export { default } from './user-sign-out-container';

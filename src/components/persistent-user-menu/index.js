@@ -1,1 +1,1 @@
-export {default} from './persistent-user-menu-redux';
+export { default } from './persistent-user-menu-view';

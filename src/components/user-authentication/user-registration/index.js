@@ -1,1 +1,1 @@
-export {default} from './user-registration-redux';
+export { default } from './user-registration-container';

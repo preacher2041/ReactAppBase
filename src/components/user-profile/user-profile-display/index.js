@@ -1,1 +1,1 @@
-export {default} from './user-profile-display-redux'
+export { default } from './user-profile-display-view';
