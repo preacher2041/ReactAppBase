@@ -45,7 +45,7 @@ const UserRegistrationView = ({
 		<div className={classes.formButtons}>
 			<Button
 				fullWidth
-				className={classes.button}
+				className={classes.registrationButton}
 				variant="contained"
 				color="secondary"
 				onClick={userRegistration}>

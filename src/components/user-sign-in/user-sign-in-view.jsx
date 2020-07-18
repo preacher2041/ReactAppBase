@@ -53,6 +53,7 @@ const UserSignInView = ({
 		/>
 		<div className={classes.formButtons}>
 			<Button
+				className={classes.signInButton}
 				variant="contained"
 				color="secondary"
 				onClick={userSignInWithCredentials}>

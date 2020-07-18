@@ -1,4 +1,4 @@
-export const styles = theme => ({
+export const styles = (theme) => ({
 	form: {
 		width: '100%', // Fix IE11 issue.
 		marginTop: theme.spacing(1)
@@ -11,9 +11,9 @@ export const styles = theme => ({
 	},
 	googleButton: {
 		marginTop: theme.spacing(6),
-		backgroundColor: "white",
-		width: "100%",
-		textTransform: "none"
+		backgroundColor: 'white',
+		width: '100%',
+		textTransform: 'none'
 	},
 	googleIcon: {
 		width: 30,
@@ -26,8 +26,8 @@ export const styles = theme => ({
 	formDividerContainer: {
 		marginTop: theme.spacing(4),
 		marginBottom: theme.spacing(3),
-		display: "flex",
-		alignItems: "center"
+		display: 'flex',
+		alignItems: 'center'
 	},
 	formDivider: {
 		flexGrow: 1,
@@ -39,14 +39,17 @@ export const styles = theme => ({
 		marginBottom: theme.spacing(1)
 	},
 	formButtons: {
-		width: "100%",
+		width: '100%',
 		marginTop: theme.spacing(4),
-		display: "flex",
-		justifyContent: "space-between",
-		alignItems: "center"
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'center'
+	},
+	signInButton: {
+		boxShadow: 'none'
 	},
 	forgottenPasswordButton: {
-		textTransform: "none",
+		textTransform: 'none',
 		fontWeight: 400
-	},
+	}
 });
