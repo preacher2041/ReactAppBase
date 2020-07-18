@@ -1,26 +1,25 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import UserRegistrationViews from './user-registration-view';
+import { registerUser } from '../../services/actions/userAuthActions';
 
-const UserRegistrationContainer = ({history, register, signInWithGoogle}) => {
+const UserRegistrationContainer = () => {
+	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-	const updateEmail = event => {
+	const updateEmail = (event) => {
 		const email = event.target.value;
 		setEmail(email);
 	};
 
-	const updatePassword = event => {
+	const updatePassword = (event) => {
 		const password = event.target.value;
 		setPassword(password);
 	};
 
 	const userRegistration = () => {
-		register(email, password, history);
-	};
-
-	const userSignInWithGoogle = () => {
-		signInWithGoogle(history);
+		dispatch(registerUser.request({ email, password }));
 	};
 
 	return (
@@ -28,9 +27,8 @@ const UserRegistrationContainer = ({history, register, signInWithGoogle}) => {
 			userRegistration={userRegistration}
 			updateEmail={updateEmail}
 			updatePassword={updatePassword}
-			userSignInWithGoogle={userSignInWithGoogle}
 		/>
-	)
+	);
 };
 
 export default UserRegistrationContainer;
