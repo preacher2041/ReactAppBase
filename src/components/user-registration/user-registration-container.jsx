@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import UserRegistrationViews from './user-registration-view';
-import { registerUser } from '../../services/actions/userAuthActions';
+import { userRegistration } from '../../services/actions/userAuthActions';
 
 const UserRegistrationContainer = () => {
 	const dispatch = useDispatch();
@@ -18,13 +18,13 @@ const UserRegistrationContainer = () => {
 		setPassword(password);
 	};
 
-	const userRegistration = () => {
-		dispatch(registerUser.request({ email, password }));
+	const registration = () => {
+		dispatch(userRegistration.request({ email, password }));
 	};
 
 	return (
 		<UserRegistrationViews
-			userRegistration={userRegistration}
+			userRegistration={registration}
 			updateEmail={updateEmail}
 			updatePassword={updatePassword}
 		/>

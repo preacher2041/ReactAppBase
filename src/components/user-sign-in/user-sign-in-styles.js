@@ -3,7 +3,7 @@ export const styles = (theme) => ({
 		width: '100%', // Fix IE11 issue.
 		marginTop: theme.spacing(1)
 	},
-	loginNotice: {
+	signInNotice: {
 		marginTop: theme.spacing(6),
 		marginBottom: theme.spacing(4),
 		textAlign: 'center',

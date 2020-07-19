@@ -1,33 +1,30 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import UserSignInView from './user-sign-in-view';
+import { userSignIn } from '../../services/actions/userAuthActions';
 
-const UserSignInContainer = ({history, signInWithCredentials, signInWithGoogle, isSubmitting}) => {
+const UserSignInContainer = () => {
+	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-	const updateEmail = event => {
-		setEmail(event.target.value)
+	const updateEmail = (event) => {
+		setEmail(event.target.value);
 	};
 
-	const updatePassword = event => {
+	const updatePassword = (event) => {
 		setPassword(event.target.value);
 	};
 
-	const userSignInWithCredentials = () => {
-		signInWithCredentials(email, password, history);
-	};
-
-	const userSignInWithGoogle = () => {
-		signInWithGoogle(history);
+	const signIn = () => {
+		dispatch(userSignIn.request({ email, password }));
 	};
 
 	return (
 		<UserSignInView
-			isSubmitting={isSubmitting}
 			updateEmail={updateEmail}
 			updatePassword={updatePassword}
-			userSignInWithCredentials={userSignInWithCredentials}
-			userSignInWithGoogle={userSignInWithGoogle}
+			userSignIn={signIn}
 		/>
 	);
 };
