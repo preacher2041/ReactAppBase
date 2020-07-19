@@ -4,7 +4,11 @@ import {
 	USER_SIGN_IN,
 	USER_FETCH_PROFILE_DATA
 } from '../actions';
-import { userRegistration, userSignIn } from '../actions/userAuthActions';
+import {
+	userRegistration,
+	userSignIn,
+	userFetchProfileData
+} from '../actions/userAuthActions';
 
 function* userRegistrationSaga() {
 	try {
@@ -53,15 +57,34 @@ function* userSignInSaga() {
 }
 
 function* fetchSignedInUserSaga() {
-	console.log('fetch Profile Data');
-}
+	try {
+		const targetURL = '/api/users/me';
+		const headerData =
+			'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWU2NDM4MzA5MmIxMzEwN2ZkNTFjMWIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE1OTUxOTE5MjB9.cubKY_NvSTSpi_3ecOOcZ0RNXczFlGITu8I9wHBsmvE';
+		const result = yield fetch(targetURL, {
+			method: 'GET',
+			headers: {
+				'x-auth-token': headerData
+			}
+		})
+			.then((response) => response.text())
+			.then((result) => result);
 
-function* watchUserSignIn() {
-	yield takeLatest(USER_SIGN_IN.REQUEST, userSignInSaga);
+		yield put(userFetchProfileData.success(result));
+	} catch (e) {
+		yield put(userFetchProfileData.fail(e));
+	}
 }
 
 function* watchUserRegistration() {
 	yield takeLatest(USER_REGISTRATION.REQUEST, userRegistrationSaga);
+}
+
+function* watchUserSignIn() {
+	yield takeLatest(
+		[USER_SIGN_IN.REQUEST, USER_REGISTRATION.SUCCESS],
+		userSignInSaga
+	);
 }
 
 function* watchUserFetchProfileData() {
