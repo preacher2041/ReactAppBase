@@ -27,8 +27,8 @@ function* userRegistrationSaga({ payload }) {
 			},
 			body: JSON.stringify(data)
 		})
-			.then((response) => response.text())
-			.then((result) => result);
+			.then(response => response.json())
+			.then(result => result);
 		yield put(userRegistration.success(result));
 	} catch (e) {
 		yield put(userRegistration.fail(e));
@@ -50,12 +50,11 @@ function* userSignInSaga({ payload }) {
 			},
 			body: JSON.stringify(data)
 		})
-			.then((response) => response.text())
-			.then((result) => {
-				localStorage.setItem('token', result);
-				return result;
-			});
-		yield put(userSignIn.success(result));
+			.then(response => response.json())
+			.then(result => result);
+			const {token} = result;
+			localStorage.setItem('token', token);
+		yield put(userSignIn.success(result.token));
 		yield put(push('/auth/home'));
 	} catch (e) {
 		yield put(userSignIn.fail(e));
@@ -72,10 +71,12 @@ function* fetchSignedInUserSaga() {
 				'x-auth-token': headerData
 			}
 		})
-			.then((response) => response.text())
-			.then((result) => result);
+			.then(response => response.json())
+			.then(result => result);
 
-		yield put(userFetchProfileData.success(result));
+		const {profileData} = result;
+
+		yield put(userFetchProfileData.success(profileData));
 	} catch (e) {
 		yield put(userFetchProfileData.fail(e));
 	}

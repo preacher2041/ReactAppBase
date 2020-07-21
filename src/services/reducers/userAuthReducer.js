@@ -13,22 +13,10 @@ export default (state = initialState, action) => {
 				isProfileLoading: true
 			};
 		case USER_FETCH_PROFILE_DATA.SUCCESS:
-			const {
-				_id = '',
-				userName = '',
-				emailAddress = '',
-				isAdmin = ''
-			} = JSON.parse(payload);
 			return {
 				...state,
 				isProfileLoading: false,
-				profileData: {
-					...state.user,
-					_id,
-					userName,
-					emailAddress,
-					isAdmin
-				}
+				profileData: payload
 			};
 		default:
 			return state;
