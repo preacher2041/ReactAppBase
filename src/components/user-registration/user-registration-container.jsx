@@ -5,12 +5,18 @@ import { userRegistration } from '../../services/actions/userAuthActions';
 
 const UserRegistrationContainer = () => {
 	const dispatch = useDispatch();
-	const [email, setEmail] = useState('');
+	const [userName, setUserName] = useState('');
+	const [emailAddress, setEmailAddress] = useState('');
 	const [password, setPassword] = useState('');
 
-	const updateEmail = (event) => {
-		const email = event.target.value;
-		setEmail(email);
+	const updateUserName = (event) => {
+		const userName = event.target.value;
+		setUserName(userName);
+	};
+
+	const updateEmailAddress = (event) => {
+		const emailAddress = event.target.value;
+		setEmailAddress(emailAddress);
 	};
 
 	const updatePassword = (event) => {
@@ -19,13 +25,16 @@ const UserRegistrationContainer = () => {
 	};
 
 	const registration = () => {
-		dispatch(userRegistration.request({ email, password }));
+		dispatch(
+			userRegistration.request({ userName, emailAddress, password })
+		);
 	};
 
 	return (
 		<UserRegistrationViews
 			userRegistration={registration}
-			updateEmail={updateEmail}
+			updateUserName={updateUserName}
+			updateEmailAddress={updateEmailAddress}
 			updatePassword={updatePassword}
 		/>
 	);

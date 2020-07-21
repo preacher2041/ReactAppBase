@@ -1,4 +1,5 @@
 import { fork, takeLatest, put } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 import {
 	USER_REGISTRATION,
 	USER_SIGN_IN,
@@ -10,13 +11,14 @@ import {
 	userFetchProfileData
 } from '../actions/userAuthActions';
 
-function* userRegistrationSaga() {
+function* userRegistrationSaga({ payload }) {
+	const { userName = '', emailAddress = '', password = '' } = payload;
 	try {
 		const targetURL = '/api/users/';
 		const data = {
-			userName: 'preacher2043',
-			emailAddress: 'lee.hitchcock2043@gmail.com',
-			password: 'letmein1234!'
+			userName,
+			emailAddress,
+			password
 		};
 		const result = yield fetch(targetURL, {
 			method: 'POST',
@@ -33,12 +35,13 @@ function* userRegistrationSaga() {
 	}
 }
 
-function* userSignInSaga() {
+function* userSignInSaga({ payload }) {
+	const { emailAddress, password } = payload;
 	try {
 		const targetURL = '/api/auth/';
 		const data = {
-			emailAddress: 'lee.hitchcock2041@gmail.com',
-			password: 'letmein1234!'
+			emailAddress,
+			password
 		};
 		const result = yield fetch(targetURL, {
 			method: 'POST',
@@ -49,18 +52,17 @@ function* userSignInSaga() {
 		})
 			.then((response) => response.text())
 			.then((result) => result);
-
 		yield put(userSignIn.success(result));
+		yield put(push('/auth/home'));
 	} catch (e) {
 		yield put(userSignIn.fail(e));
 	}
 }
 
-function* fetchSignedInUserSaga() {
+function* fetchSignedInUserSaga({ payload }) {
 	try {
 		const targetURL = '/api/users/me';
-		const headerData =
-			'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWU2NDM4MzA5MmIxMzEwN2ZkNTFjMWIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE1OTUxOTE5MjB9.cubKY_NvSTSpi_3ecOOcZ0RNXczFlGITu8I9wHBsmvE';
+		const headerData = payload;
 		const result = yield fetch(targetURL, {
 			method: 'GET',
 			headers: {
@@ -81,10 +83,7 @@ function* watchUserRegistration() {
 }
 
 function* watchUserSignIn() {
-	yield takeLatest(
-		[USER_SIGN_IN.REQUEST, USER_REGISTRATION.SUCCESS],
-		userSignInSaga
-	);
+	yield takeLatest([USER_SIGN_IN.REQUEST], userSignInSaga);
 }
 
 function* watchUserFetchProfileData() {

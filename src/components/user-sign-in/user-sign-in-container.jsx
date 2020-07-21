@@ -5,11 +5,11 @@ import { userSignIn } from '../../services/actions/userAuthActions';
 
 const UserSignInContainer = () => {
 	const dispatch = useDispatch();
-	const [email, setEmail] = useState('');
+	const [emailAddress, setEmailAddress] = useState('');
 	const [password, setPassword] = useState('');
 
-	const updateEmail = (event) => {
-		setEmail(event.target.value);
+	const updateEmailAddress = (event) => {
+		setEmailAddress(event.target.value);
 	};
 
 	const updatePassword = (event) => {
@@ -17,12 +17,12 @@ const UserSignInContainer = () => {
 	};
 
 	const signIn = () => {
-		dispatch(userSignIn.request({ email, password }));
+		dispatch(userSignIn.request({ emailAddress, password }));
 	};
 
 	return (
 		<UserSignInView
-			updateEmail={updateEmail}
+			updateEmailAddress={updateEmailAddress}
 			updatePassword={updatePassword}
 			userSignIn={signIn}
 		/>

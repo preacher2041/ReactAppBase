@@ -5,7 +5,7 @@ import { Button, TextField, Typography } from '@material-ui/core';
 
 const UserSignInView = ({
 	classes,
-	updateEmail,
+	updateEmailAddress,
 	updatePassword,
 	userSignIn
 }) => (
@@ -23,8 +23,8 @@ const UserSignInView = ({
 			color="primary"
 			label="Email"
 			type="email"
-			name="email"
-			onChange={updateEmail}
+			name="emailAddres"
+			onChange={updateEmailAddress}
 		/>
 		<TextField
 			className={classes.textField}

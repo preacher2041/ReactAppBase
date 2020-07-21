@@ -6,7 +6,8 @@ import { styles } from './user-registration-styles';
 const UserRegistrationView = ({
 	classes,
 	userRegistration,
-	updateEmail,
+	updateUserName,
+	updateEmailAddress,
 	updatePassword
 }) => (
 	<form className={classes.form}>
@@ -22,10 +23,21 @@ const UserRegistrationView = ({
 			fullWidth
 			variant="outlined"
 			color="primary"
+			label="User Name"
+			type="text"
+			name="userName"
+			onChange={updateUserName}
+		/>
+		<TextField
+			required
+			className={classes.textField}
+			fullWidth
+			variant="outlined"
+			color="primary"
 			label="Email"
 			type="email"
 			name="email"
-			onChange={updateEmail}
+			onChange={updateEmailAddress}
 		/>
 		<TextField
 			required
