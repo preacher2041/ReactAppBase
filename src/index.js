@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 
 import {
 	MuiThemeProvider,
@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core/styles';
 
 import App from './components/app';
-import store from './services/store';
+import store, { history } from './services/store';
 import themes from './theme';
 
 let theme = createMuiTheme({ ...themes });
@@ -19,9 +19,9 @@ theme = responsiveFontSizes(theme);
 const app = (
 	<Provider store={store}>
 		<MuiThemeProvider theme={theme}>
-			<Router>
+			<ConnectedRouter history={history}>
 				<App />
-			</Router>
+			</ConnectedRouter>
 		</MuiThemeProvider>
 	</Provider>
 );
