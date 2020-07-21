@@ -51,7 +51,10 @@ function* userSignInSaga({ payload }) {
 			body: JSON.stringify(data)
 		})
 			.then((response) => response.text())
-			.then((result) => result);
+			.then((result) => {
+				localStorage.setItem('token', result);
+				return result;
+			});
 		yield put(userSignIn.success(result));
 		yield put(push('/auth/home'));
 	} catch (e) {
@@ -59,10 +62,10 @@ function* userSignInSaga({ payload }) {
 	}
 }
 
-function* fetchSignedInUserSaga({ payload }) {
+function* fetchSignedInUserSaga() {
 	try {
 		const targetURL = '/api/users/me';
-		const headerData = payload;
+		const headerData = localStorage.getItem('token');
 		const result = yield fetch(targetURL, {
 			method: 'GET',
 			headers: {

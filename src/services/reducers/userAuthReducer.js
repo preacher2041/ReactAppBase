@@ -1,15 +1,16 @@
 import { USER_SIGN_IN, USER_FETCH_PROFILE_DATA } from '../actions';
-const initialState = {};
+const initialState = {
+	profileData: {},
+	isProfileLoading: false
+};
 
 export default (state = initialState, action) => {
 	const { type, payload } = action;
 	switch (type) {
-		case USER_SIGN_IN.SUCCESS:
+		case (USER_FETCH_PROFILE_DATA.REQUEST, USER_SIGN_IN.SUCCESS):
 			return {
-				...state,
-				user: {
-					token: payload
-				}
+				...initialState,
+				isProfileLoading: true
 			};
 		case USER_FETCH_PROFILE_DATA.SUCCESS:
 			const {
@@ -20,9 +21,10 @@ export default (state = initialState, action) => {
 			} = JSON.parse(payload);
 			return {
 				...state,
-				user: {
+				isProfileLoading: false,
+				profileData: {
 					...state.user,
-					_id: _id,
+					_id,
 					userName,
 					emailAddress,
 					isAdmin

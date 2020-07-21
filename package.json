@@ -1,38 +1,46 @@
 {
-  "name": "authentication-framework",
-  "version": "1.0.0",
-  "description": "Basic auth framework using React, Firebase and Material UI",
-  "keywords": [],
-  "main": "src/index.js",
-  "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "axios": "^0.19.2",
-    "connected-react-router": "^6.8.0",
-    "history": "^4.10.1",
-    "http-proxy-middleware": "^1.0.5",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
-    "react-test-renderer": "^16.10.2",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-saga": "^1.1.3"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+	"name": "authentication-framework",
+	"version": "1.0.0",
+	"description": "Basic auth framework using React, Firebase and Material UI",
+	"keywords": [],
+	"main": "src/index.js",
+	"dependencies": {
+		"@material-ui/core": "^4.11.0",
+		"@material-ui/icons": "^4.9.1",
+		"axios": "^0.19.2",
+		"connected-react-router": "^6.8.0",
+		"history": "^4.10.1",
+		"http-proxy-middleware": "^1.0.5",
+		"prop-types": "^15.7.2",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-redux": "^7.2.0",
+		"react-router-dom": "^5.2.0",
+		"react-scripts": "^3.4.1",
+		"react-test-renderer": "^16.10.2",
+		"redux": "^4.0.5",
+		"redux-devtools-extension": "^2.13.8",
+		"redux-saga": "^1.1.3",
+		"reselect": "^4.0.0"
+	},
+	"devDependencies": {
+		"eslint-config-airbnb": "^18.2.0",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-jsx-a11y": "^6.3.1",
+		"eslint-plugin-prettier": "^3.1.4",
+		"prettier": "^2.0.5"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject",
+		"lint": "eslint ."
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	]
 }
