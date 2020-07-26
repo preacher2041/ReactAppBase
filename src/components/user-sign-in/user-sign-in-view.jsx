@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { styles } from './user-sign-in-styles';
 import { withStyles } from '@material-ui/core/styles';
 import { Button, TextField, Typography } from '@material-ui/core';
-import { selectUserError } from '../../services/selectors/userAuthSelectors';
 
 const UserSignInView = ({
 	classes,
@@ -11,7 +10,6 @@ const UserSignInView = ({
 	updatePassword,
 	userSignIn
 }) => {
-	const userError = useSelector(selectUserError);
 	return (
 		<form className={classes.form}>
 			<Typography
@@ -39,8 +37,6 @@ const UserSignInView = ({
 				type="password"
 				name="password"
 				onChange={updatePassword}
-				error={userError}
-				helperText={userError}
 			/>
 			<div className={classes.formButtons}>
 				<Button

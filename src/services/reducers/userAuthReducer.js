@@ -1,7 +1,11 @@
 import { USER_SIGN_IN, USER_FETCH_PROFILE_DATA } from '../actions';
 const initialState = {
 	profileData: {},
-	isProfileLoading: false
+	isProfileLoading: false,
+	profileErrorData: {
+		isError: false,
+		errorMessage: ''
+	}
 };
 
 export default (state = initialState, action) => {
@@ -10,34 +14,37 @@ export default (state = initialState, action) => {
 		case (USER_FETCH_PROFILE_DATA.REQUEST, USER_SIGN_IN.SUCCESS):
 			return {
 				...initialState,
-				isProfileLoading: true
+				isProfileLoading: true,
+				profileErrorData: initialState.profileError
 			};
 		case USER_SIGN_IN.FAIL: {
 			const { data = {} } = payload;
+			const { error = ''} = data;
 			return {
 				...state,
-				profileData: {
-					...state.profileData,
-					error: data
+				profileErrorData: {
+					isError: true,
+					errorMessage: error
 				}
 			};
 		}
-		case USER_FETCH_PROFILE_DATA.SUCCESS:
+		case USER_FETCH_PROFILE_DATA.SUCCESS: 
 			return {
 				...state,
 				isProfileLoading: false,
-				profileData: payload
+				profileData: payload,
+				profileErrorData: initialState.profileError
 			};
-		case USER_FETCH_PROFILE_DATA.FAIL: {
+		case USER_FETCH_PROFILE_DATA.FAIL: 
 			const { data = {} } = payload;
+			const { error = ''} = data;
 			return {
 				...state,
-				profileData: {
-					...state.profileData,
-					error: data
+				profileErrorData: {
+					isError: true,
+					errorMessage: error
 				}
 			};
-		}
 		default:
 			return state;
 	}

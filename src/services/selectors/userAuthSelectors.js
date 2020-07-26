@@ -31,7 +31,17 @@ export const selectUserIsAdmin = createSelector(
 	({ isAdmin = false }) => isAdmin || false
 );
 
-export const selectUserError = createSelector(
-	selectProfileData,
-	({ error = '' }) => error || ''
+export const selectProfileErrorData = createSelector(
+	getState,
+	({ profileErrorData = {} }) => profileErrorData
+);
+
+export const selectIsError = createSelector(
+	selectProfileErrorData,
+	({ isError}) => isError || false
+);
+
+export const selectErrorMessage = createSelector(
+	selectProfileErrorData,
+	({errorMessage = ''}) => errorMessage || ''
 );

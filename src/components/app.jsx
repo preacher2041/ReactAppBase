@@ -1,7 +1,6 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline/CssBaseline';
 import HomePage from '../pages/home-page';
-import SignedInUserLandingPage from '../pages/signed-in-user-landing-page';
 import { Route, Switch } from 'react-router-dom';
 import RequiredAuth from './required-auth/required-auth-container';
 
