@@ -1,5 +1,6 @@
 import { fork, takeLatest, put } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
+import axios from 'axios';
 import {
 	USER_REGISTRATION,
 	USER_SIGN_IN,
@@ -20,65 +21,57 @@ function* userRegistrationSaga({ payload }) {
 			emailAddress,
 			password
 		};
-		const result = yield fetch(targetURL, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(data)
-		})
-			.then(response => response.json())
-			.then(result => result);
-		yield put(userRegistration.success(result));
+		const response = yield axios(targetURL, {
+			method: 'post',
+			data
+		});
+		yield put(userRegistration.success(response.data.profileData));
+		console.log(response.headers);
+		return yield (response) => response.data;
 	} catch (e) {
-		yield put(userRegistration.fail(e));
+		yield put(userRegistration.fail(e.response));
 	}
 }
 
 function* userSignInSaga({ payload }) {
-	const { emailAddress, password } = payload;
+	const { emailAddress = '', password = '' } = payload;
 	try {
 		const targetURL = '/api/auth/';
 		const data = {
 			emailAddress,
 			password
 		};
-		const result = yield fetch(targetURL, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(data)
-		})
-			.then(response => response.json())
-			.then(result => result);
-			const {token} = result;
-			localStorage.setItem('token', token);
-		yield put(userSignIn.success(result.token));
-		yield put(push('/auth/home'));
+		const response = yield axios(targetURL, {
+			method: 'post',
+			data
+		});
+		yield put(userSignIn.success(response.data));
+		return yield (response) => response.data;
 	} catch (e) {
-		yield put(userSignIn.fail(e));
+		yield put(userSignIn.fail(e.response));
 	}
+}
+
+function* setUserToken({ payload }) {
+	const { token = '' } = payload;
+	localStorage.setItem('token', token);
+	yield put(push('/auth/home'));
 }
 
 function* fetchSignedInUserSaga() {
 	try {
 		const targetURL = '/api/users/me';
 		const headerData = localStorage.getItem('token');
-		const result = yield fetch(targetURL, {
-			method: 'GET',
+		const response = yield axios(targetURL, {
+			method: 'get',
 			headers: {
 				'x-auth-token': headerData
 			}
-		})
-			.then(response => response.json())
-			.then(result => result);
-
-		const {profileData} = result;
-
-		yield put(userFetchProfileData.success(profileData));
+		});
+		yield put(userFetchProfileData.success(response.data.profileData));
+		return yield (response) => response;
 	} catch (e) {
-		yield put(userFetchProfileData.fail(e));
+		yield put(userFetchProfileData.fail(e.response));
 	}
 }
 
@@ -88,6 +81,10 @@ function* watchUserRegistration() {
 
 function* watchUserSignIn() {
 	yield takeLatest([USER_SIGN_IN.REQUEST], userSignInSaga);
+}
+
+function* watchSetUserToken() {
+	yield takeLatest(USER_SIGN_IN.SUCCESS, setUserToken);
 }
 
 function* watchUserFetchProfileData() {
@@ -100,5 +97,6 @@ function* watchUserFetchProfileData() {
 export default [
 	fork(watchUserRegistration),
 	fork(watchUserSignIn),
+	fork(watchSetUserToken),
 	fork(watchUserFetchProfileData)
 ];
