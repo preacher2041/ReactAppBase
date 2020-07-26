@@ -30,3 +30,8 @@ export const selectUserIsAdmin = createSelector(
 	selectProfileData,
 	({ isAdmin = false }) => isAdmin || false
 );
+
+export const selectUserError = createSelector(
+	selectProfileData,
+	({ error = '' }) => error || ''
+);

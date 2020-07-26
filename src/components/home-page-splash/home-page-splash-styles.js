@@ -1,10 +1,10 @@
-export const styles = theme => ({
+export const styles = (theme) => ({
 	container: {
-		height: "100vh",
-		display: "flex",
-		alignItems:	"center",
+		height: '100%',
+		display: 'flex',
+		alignItems: 'center',
 		backgroundColor: theme.palette.primary.main,
-		[theme.breakpoints.down("sm")]: {
+		[theme.breakpoints.down('sm')]: {
 			display: 'none'
 		}
 	},
