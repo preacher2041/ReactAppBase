@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import { styles } from './user-sign-in-styles';
 import { withStyles } from '@material-ui/core/styles';
 import { Button, TextField, Typography } from '@material-ui/core';

@@ -26,7 +26,6 @@ function* userRegistrationSaga({ payload }) {
 			data
 		});
 		yield put(userRegistration.success(response.data.profileData));
-		console.log(response.headers);
 		return yield (response) => response.data;
 	} catch (e) {
 		yield put(userRegistration.fail(e.response));
