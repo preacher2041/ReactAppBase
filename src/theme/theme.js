@@ -36,11 +36,6 @@ export default {
 	typography: {
 		useNextVariants: true,
 		fontFamily: [
-			'hack',
-			'-apple-system',
-			'BlinkMacSystemFont',
-			'"Segoe UI"',
-			'Roboto',
 			'"Helvetica Neue"',
 			'Arial',
 			'sans-serif',
@@ -57,10 +52,5 @@ export default {
 			lg: 1440,
 			xl: 1920,
 		},
-	},
-	globalVariables: {
-		mainMenuDrawerWidth: '250px',
-		persistentUserMenuDrawerWidth: '250px',
-		appBarHeight: '64px',
 	}
 };
