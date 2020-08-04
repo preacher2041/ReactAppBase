@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {AppBar, Toolbar, Typography} from '@material-ui/core';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import Cta from '../cta';
+import UserAuthentication from '../userAuthentication';
 
-import {styles} from './navBarStyles';
+import { styles } from './navBarStyles';
 
-const navBarView = ({classes}) => (
+const navBarView = ({ classes }) => (
 	<div className={classes.root}>
 		<AppBar elevation={0} position="static" className={classes.appBar}>
 			<Toolbar>
@@ -16,8 +16,7 @@ const navBarView = ({classes}) => (
 						Myth Maker
 					</Typography>
 				</Link>
-				<Cta>Sign Up</Cta>
-				<Cta>Sign In</Cta>
+				<UserAuthentication />
 			</Toolbar>
 		</AppBar>
 	</div>

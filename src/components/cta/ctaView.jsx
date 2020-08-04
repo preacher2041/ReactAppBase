@@ -1,11 +1,9 @@
 import React from 'react';
-import {Button} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 const CtaView = (props) => {
-    const {children} = props;
-    return (
-        <Button>{children}</Button>
-    );
+	const { children, onClick } = props;
+	return <Button onClick={onClick}>{children}</Button>;
 };
 
 export default CtaView;
