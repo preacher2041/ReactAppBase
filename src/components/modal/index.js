@@ -1,1 +1,1 @@
-export {default} from './modalView.jsx';
+export {default} from './ModalView.jsx';

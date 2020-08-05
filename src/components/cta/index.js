@@ -1,1 +1,1 @@
-export {default} from './ctaView.jsx';
+export {default} from './CtaView.jsx';

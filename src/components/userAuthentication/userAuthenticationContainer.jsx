@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import UserAuthenticationView from './userAuthenticationView';
+import UserAuthenticationView from './UserAuthenticationView';
 
-import { openModal, closeModal } from './userAuthenticationActions';
+import { openModal, closeModal } from './UserAuthenticationActions';
 
 const UserAuthenticationContainer = () => {
 	const dispatch = useDispatch();

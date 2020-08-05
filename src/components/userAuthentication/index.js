@@ -1,1 +1,1 @@
-export { default } from './userAuthenticationContainer.jsx';
+export { default } from './UserAuthenticationContainer.jsx';

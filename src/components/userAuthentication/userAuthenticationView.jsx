@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import Cta from '../cta';
-import Modal from '../modal';
+import Cta from '../Cta';
+import Modal from '../Modal';
 
-import { selectIsModalOpen } from './userAuthenticationSelectors';
+import { selectIsModalOpen } from './UserAuthenticationSelectors';
 
 const UserAuthenticationView = (props) => {
 	const { onSignInClick, onSignUpClick, onModalClose } = props;

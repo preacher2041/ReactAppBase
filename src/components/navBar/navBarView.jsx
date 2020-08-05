@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-import UserAuthentication from '../userAuthentication';
+import UserAuthentication from '../UserAuthentication';
 
-import { styles } from './navBarStyles';
+import { styles } from './NavBarStyles';
 
-const navBarView = ({ classes }) => (
+const NavBarView = ({ classes }) => (
 	<div className={classes.root}>
 		<AppBar elevation={0} position="static" className={classes.appBar}>
 			<Toolbar>
@@ -22,4 +22,4 @@ const navBarView = ({ classes }) => (
 	</div>
 );
 
-export default withStyles(styles)(navBarView);
+export default withStyles(styles)(NavBarView);

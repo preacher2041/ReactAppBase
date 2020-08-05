@@ -7,7 +7,7 @@ import {
 	DialogTitle
 } from '@material-ui/core';
 
-const Modal = (props) => {
+const ModalView = (props) => {
 	const { open, onClose, ariaLabel } = props;
 	return (
 		<Dialog open={open} onClose={onClose} aria-labelledby={ariaLabel}>
@@ -23,4 +23,4 @@ const Modal = (props) => {
 	);
 };
 
-export default Modal;
+export default ModalView;
