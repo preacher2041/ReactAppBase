@@ -1,21 +1,27 @@
-import { OPEN_MODAL, CLOSE_MODAL } from './UserAuthenticationTypes';
+import { OPEN_AUTHENTICATION_MODAL, CLOSE_AUTHENTICATION_MODAL } from './UserAuthenticationTypes';
 
 const initialState = {
-	isModalOpen: false
+	modal: {
+		isModalOpen: false,
+		modalName: ''
+	}
 };
 
 export default (state = initialState, action) => {
-	const { type } = action;
+	const { type, payload } = action;
 	switch (type) {
-		case OPEN_MODAL:
+		case OPEN_AUTHENTICATION_MODAL:
 			return {
 				...state,
-				isModalOpen: true
+				modal: {
+					isModalOpen: true,
+					modalName: payload,
+				}
 			};
-		case CLOSE_MODAL:
+		case CLOSE_AUTHENTICATION_MODAL:
 			return {
 				...state,
-				isModalOpen: initialState.isModalOpen
+				modal: initialState.modal
 			};
 		default:
 			return state;

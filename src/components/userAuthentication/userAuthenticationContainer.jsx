@@ -3,21 +3,31 @@ import { useDispatch } from 'react-redux';
 
 import UserAuthenticationView from './UserAuthenticationView';
 
-import { openModal, closeModal } from './UserAuthenticationActions';
+import { openAuthenticationModal, closeAuthenticationModal } from './UserAuthenticationActions';
 
 const UserAuthenticationContainer = () => {
 	const dispatch = useDispatch();
 
-	const onSignInClick = () => {
-		dispatch(openModal());
+	const onSignInClick = (event) => {
+		const target = event.currentTarget;
+		const name = target.name;
+
+		onModalOpen(name);
 	};
 
-	const onSignUpClick = () => {
-		dispatch(openModal());
+	const onSignUpClick = (event) => {
+		const target = event.currentTarget;
+		const name = target.name;
+
+		onModalOpen(name);
 	};
+
+	const onModalOpen = (name) =>{
+		dispatch(openAuthenticationModal(name));
+	}
 
 	const onModalClose = () => {
-		dispatch(closeModal());
+		dispatch(closeAuthenticationModal());
 	};
 
 	return (

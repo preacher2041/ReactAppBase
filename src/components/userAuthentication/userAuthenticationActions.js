@@ -1,6 +1,6 @@
 import { createActions } from '../../utils/actions';
 
-import { OPEN_MODAL, CLOSE_MODAL } from './UserAuthenticationTypes';
+import { OPEN_AUTHENTICATION_MODAL, CLOSE_AUTHENTICATION_MODAL } from './UserAuthenticationTypes';
 
-export const openModal = createActions(OPEN_MODAL);
-export const closeModal = createActions(CLOSE_MODAL);
+export const openAuthenticationModal = createActions(OPEN_AUTHENTICATION_MODAL);
+export const closeAuthenticationModal = createActions(CLOSE_AUTHENTICATION_MODAL);

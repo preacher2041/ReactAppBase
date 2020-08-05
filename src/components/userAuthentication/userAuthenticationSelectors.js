@@ -2,7 +2,17 @@ import { createSelector } from 'reselect';
 
 const getState = ({ userAuth }) => userAuth;
 
-export const selectIsModalOpen = createSelector(
+export const selectModalData = createSelector(
 	getState,
-	({ isModalOpen = false }) => isModalOpen || false
+	({ modal = {} }) => modal || {}
+);
+
+export const selectIsModalOpen = createSelector(
+	selectModalData,
+	({isModalOpen = false }) => isModalOpen || false
+);
+
+export const selectModalName = createSelector(
+	selectModalData,
+	({modalName = '' }) => modalName || ''
 );
