@@ -8,8 +8,6 @@ import {SignUpModalTitle, SignUpModalContent, SignUpModalActions} from '../SignU
 
 import { selectIsModalOpen, selectModalName } from './UserAuthenticationSelectors';
 
-console.log('Sign In Modal Actions: ', SignInModalActions);
-
 const UserAuthenticationView = (props) => {
 	const { onSignInClick, onSignUpClick, onModalClose } = props;
 	const isModalOpen = useSelector(selectIsModalOpen);
