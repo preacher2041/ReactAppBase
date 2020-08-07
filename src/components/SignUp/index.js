@@ -1,1 +1,1 @@
-export {signUpModalTitle, signUpModalContent, signUpModalActions} from './SignUpView.jsx';
+export {SignUpModalTitle, SignUpModalContent, SignUpModalActions} from './SignUpView.jsx';

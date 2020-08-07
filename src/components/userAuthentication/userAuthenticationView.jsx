@@ -3,10 +3,12 @@ import { useSelector } from 'react-redux';
 
 import Cta from '../Cta';
 import Modal from '../Modal';
-import {signInModalTitle, signInModalContent, signInModalActions} from '../SignIn';
-import {signUpModalTitle, signUpModalContent, signUpModalActions} from '../SignUp';
+import {SignInModalTitle, SignInModalContent, SignInModalActions} from '../SignIn';
+import {SignUpModalTitle, SignUpModalContent, SignUpModalActions} from '../SignUp';
 
 import { selectIsModalOpen, selectModalName } from './UserAuthenticationSelectors';
+
+console.log('Sign In Modal Actions: ', SignInModalActions);
 
 const UserAuthenticationView = (props) => {
 	const { onSignInClick, onSignUpClick, onModalClose } = props;
@@ -17,11 +19,11 @@ const UserAuthenticationView = (props) => {
 		switch(modalName) {
 			case 'signIn':
 				return (
-					<Modal open={isModalOpen} onClose={onModalClose} modalTitle={signInModalTitle()} modalContent={signInModalContent()} modalActions={signInModalActions()} />
+					<Modal open={isModalOpen} onClose={onModalClose} modalTitle={<SignInModalTitle />} modalContent={<SignInModalContent />} modalActions={<SignInModalActions />} />
 				);
 			case 'signUp':
 				return (
-					<Modal open={isModalOpen} onClose={onModalClose} modalTitle={signUpModalTitle()} modalContent={signUpModalContent()} modalActions={signUpModalActions()} />
+					<Modal open={isModalOpen} onClose={onModalClose} modalTitle={<SignUpModalTitle />} modalContent={<SignUpModalContent />} modalActions={<SignUpModalActions />} />
 				);
 			default:
 				break;

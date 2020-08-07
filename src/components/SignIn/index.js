@@ -1,1 +1,1 @@
-export {signInModalTitle, signInModalContent, signInModalActions} from './SignInView.jsx'
+export {SignInModalTitle, SignInModalContent, SignInModalActions} from './SignInView.jsx'

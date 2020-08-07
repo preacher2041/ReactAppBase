@@ -1,19 +1,32 @@
 import React from 'react';
+import {withStyles} from '@material-ui/core/styles';
 
-export const signUpModalTitle = () => (
-    <>
-        Sign Up Title
-    </>
-);
+import {styles} from './SignUpStyles';
 
-export const signUpModalContent = () => (
-    <>
-        Sign Up Content
-    </>
-);
+export const SignUpModalTitle = withStyles(styles)((props) => {
+    const {classes} = props;
+    return (
+        <>
+            Sign Up Titile
+        </>
+    );
+});
 
-export const signUpModalActions = () => (
-    <>
-        Sign Up Actions
-    </>
-);
+export const SignUpModalContent = withStyles(styles)((props) => {
+    const {classes} = props;
+    return (
+        <>
+            Sign Up Content
+        </>
+    );
+});
+
+
+export const SignUpModalActions = withStyles(styles)((props) => {
+    const {classes} = props;
+    return (
+        <>
+            Sign Up Actions
+        </>
+    );
+});
