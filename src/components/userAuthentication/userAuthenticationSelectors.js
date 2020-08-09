@@ -9,10 +9,10 @@ export const selectModalData = createSelector(
 
 export const selectIsModalOpen = createSelector(
 	selectModalData,
-	({isModalOpen = false }) => isModalOpen || false
+	({ isModalOpen = false }) => isModalOpen || false
 );
 
 export const selectModalName = createSelector(
 	selectModalData,
-	({modalName = '' }) => modalName || ''
+	({ modalName = '' }) => modalName || ''
 );

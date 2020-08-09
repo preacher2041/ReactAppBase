@@ -3,7 +3,10 @@ import { useDispatch } from 'react-redux';
 
 import UserAuthenticationView from './UserAuthenticationView';
 
-import { openAuthenticationModal, closeAuthenticationModal } from './UserAuthenticationActions';
+import {
+	openAuthenticationModal,
+	closeAuthenticationModal
+} from './UserAuthenticationActions';
 
 const UserAuthenticationContainer = () => {
 	const dispatch = useDispatch();
@@ -22,9 +25,9 @@ const UserAuthenticationContainer = () => {
 		onModalOpen(name);
 	};
 
-	const onModalOpen = (name) =>{
+	const onModalOpen = (name) => {
 		dispatch(openAuthenticationModal(name));
-	}
+	};
 
 	const onModalClose = () => {
 		dispatch(closeAuthenticationModal());

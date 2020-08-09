@@ -9,7 +9,7 @@ import {
 	responsiveFontSizes
 } from '@material-ui/core/styles';
 
-import App from './components/app';
+import App from './components/App';
 import store, { history } from './services/store';
 import themes from './theme';
 
