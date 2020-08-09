@@ -1,15 +1,20 @@
-export const styles = theme => ({
-	root: {
-		flexGrow: 1,
+export const styles = (theme) => ({
+	dialogTitle: {
+		width: '464px',
+		padding: '24px 24px 0 24px'
 	},
-	grow: {
-		flexGrow: 1,
-		textDecoration: 'none'
+	dialog_h1: {
+		textAlign: 'center'
 	},
-	appBar: {
-		background: '#F7F7F7',
+	dialog_h4: {
+		textAlign: 'center'
 	},
-	title: {
-		color: '#0C0C0C',
+	dialogContent: {
+		width: '464px',
+		padding: '0 24px'
 	},
+	dialogActions: {
+		width: '464px',
+		padding: '0 24px 24px 24px'
+	}
 });
