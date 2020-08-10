@@ -14,12 +14,15 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SignInStyles';
 
 export const SignInModalTitle = withStyles(styles)((props) => {
-	const { classes } = props;
+	const { classes, onClose } = props;
 	return (
 		<div className={classes.dialogTitle}>
-			<IconButton aria-label="close" className={classes.closeButton}>
-				<Close />
-			</IconButton>
+			{onClose ? (
+				<IconButton className={classes.closeButton} onClick={onClose}>
+					<Close />
+				</IconButton>
+			) : null}
+
 			<Typography
 				className={`${classes.dialogText} ${classes.dialogTitleText}`}
 				variant="h2">

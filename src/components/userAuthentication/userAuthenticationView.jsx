@@ -31,7 +31,7 @@ const UserAuthenticationView = (props) => {
 					<Modal
 						open={isModalOpen}
 						onClose={onModalClose}
-						modalTitle={<SignInModalTitle />}
+						modalTitle={<SignInModalTitle onClose={onModalClose} />}
 						modalContent={<SignInModalContent />}
 						modalActions={<SignInModalActions />}
 					/>
