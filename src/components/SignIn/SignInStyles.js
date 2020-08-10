@@ -1,7 +1,7 @@
 export const styles = (theme) => ({
 	dialogTitle: {
 		width: '464px',
-		padding: '24px 24px 0 24px'
+		padding: '24px 24px 24px 24px'
 	},
 	closeButton: {
 		position: 'absolute',
@@ -9,24 +9,32 @@ export const styles = (theme) => ({
 		top: theme.spacing(1),
 		color: theme.palette.grey[500]
 	},
-	dialog_h2: {
-		textAlign: 'center',
-		fontWeight: 700,
-		marginTop: '-9px'
+	dialogText: {
+		textAlign: 'center'
 	},
-	dialog_body: {
-		textAlign: 'center',
+	dialogTitleText: {
+		fontWeight: 700,
+		marginTop: '-7px',
+		marginBottom: '12px'
+	},
+	dialogSubTitleText: {
 		fontWeight: 300,
-		marginTop: '-5px'
+		marginBottom: '-2px'
 	},
 	dialogContent: {
 		width: '464px',
-		padding: '24px'
+		padding: '0 24px 24px 24px'
 	},
 	textField: {
 		width: '100%',
 		height: '48px',
-		marginBottom: '32px'
+		marginBottom: '24px'
+	},
+	textFieldInput: {
+		'& input': {
+			paddingTop: '15px',
+			paddingBottom: '15px'
+		}
 	},
 	textFieldIcon: {
 		color: '#D8D8DA'
@@ -50,5 +58,11 @@ export const styles = (theme) => ({
 	},
 	dialogFooterLinks: {
 		fontWeight: 400
+	},
+	passwordResetLink: {
+		marginTop: '-5px'
+	},
+	signUpLink: {
+		marginBottom: '-2px'
 	}
 });

@@ -20,10 +20,14 @@ export const SignInModalTitle = withStyles(styles)((props) => {
 			<IconButton aria-label="close" className={classes.closeButton}>
 				<Close />
 			</IconButton>
-			<Typography className={classes.dialog_h2} variant="h2">
+			<Typography
+				className={`${classes.dialogText} ${classes.dialogTitleText}`}
+				variant="h2">
 				Hello!
 			</Typography>
-			<Typography className={classes.dialog_body} variant="body1">
+			<Typography
+				className={`${classes.dialogText} ${classes.dialogSubTitleText}`}
+				variant="body1">
 				Sign into your account here
 			</Typography>
 		</div>
@@ -32,19 +36,21 @@ export const SignInModalTitle = withStyles(styles)((props) => {
 
 export const SignInModalContent = withStyles(styles)((props) => {
 	const { classes } = props;
+	const inputProps = {
+		className: `${classes.textFieldInput}`,
+		startAdornment: (
+			<InputAdornment position="start">
+				<EmailRounded color="disabled" />
+			</InputAdornment>
+		)
+	};
 	return (
 		<DialogContent className={classes.dialogContent}>
 			<TextField
 				className={classes.textField}
 				placeholder="Email"
 				variant="outlined"
-				InputProps={{
-					startAdornment: (
-						<InputAdornment position="start">
-							<EmailRounded color="disabled" />
-						</InputAdornment>
-					)
-				}}
+				InputProps={inputProps}
 			/>
 			<Button
 				className={classes.button}
@@ -60,13 +66,15 @@ export const SignInModalActions = withStyles(styles)((props) => {
 	const { classes } = props;
 	return (
 		<div className={classes.dialogFooter}>
-			<Typography className={classes.dialogFooterText}>
-				Forgot password?
-				<Link className={classes.dialogFooterLinks}> Reset</Link>
+			<Typography
+				className={`${classes.dialogFooterText} ${classes.passwordResetLink}`}>
+				Forgot password?&nbsp;
+				<Link className={classes.dialogFooterLinks}>Reset</Link>
 			</Typography>
-			<Typography className={classes.dialogFooterText}>
-				Don't have an account?
-				<Link className={classes.dialogFooterLinks}> Sign Up</Link>
+			<Typography
+				className={`${classes.dialogFooterText} ${classes.signUpLink}`}>
+				Don't have an account?&nbsp;
+				<Link className={classes.dialogFooterLinks}>Sign Up</Link>
 			</Typography>
 		</div>
 	);

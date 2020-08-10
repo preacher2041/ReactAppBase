@@ -5,7 +5,6 @@ import { Dialog } from '@material-ui/core';
 import { styles } from './ModalStyles';
 
 const ModalView = (props) => {
-	const { classes } = props;
 	const {
 		open,
 		onClose,
