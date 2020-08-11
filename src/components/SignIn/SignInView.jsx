@@ -8,7 +8,12 @@ import {
 	TextField,
 	Typography
 } from '@material-ui/core';
-import { Close, EmailRounded } from '@material-ui/icons';
+import {
+	Close,
+	EmailRounded,
+	Visibility,
+	VisibilityOff
+} from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
 
 import { styles } from './SignInStyles';
@@ -38,8 +43,10 @@ export const SignInModalTitle = withStyles(styles)((props) => {
 });
 
 export const SignInModalContent = withStyles(styles)((props) => {
+	const displayEmail = false;
+	const visibility = false;
 	const { classes } = props;
-	const inputProps = {
+	const emailInputProps = {
 		className: `${classes.textFieldInput}`,
 		startAdornment: (
 			<InputAdornment position="start">
@@ -47,20 +54,51 @@ export const SignInModalContent = withStyles(styles)((props) => {
 			</InputAdornment>
 		)
 	};
+	const passwordInputProps = {
+		className: `${classes.textFieldInput}`,
+		startAdornment: (
+			<InputAdornment position="start">
+				{visibility ? (
+					<Visibility color="disabled" />
+				) : (
+					<VisibilityOff color="disabled" />
+				)}
+			</InputAdornment>
+		)
+	};
 	return (
 		<DialogContent className={classes.dialogContent}>
-			<TextField
-				className={classes.textField}
-				placeholder="Email"
-				variant="outlined"
-				InputProps={inputProps}
-			/>
-			<Button
-				className={classes.button}
-				variant="contained"
-				color="primary">
-				Next
-			</Button>
+			{displayEmail ? (
+				<>
+					<TextField
+						className={classes.textField}
+						placeholder="Email"
+						variant="outlined"
+						InputProps={emailInputProps}
+					/>
+					<Button
+						className={classes.button}
+						variant="contained"
+						color="primary">
+						Next
+					</Button>
+				</>
+			) : (
+				<>
+					<TextField
+						className={classes.textField}
+						placeholder="Password"
+						variant="outlined"
+						InputProps={passwordInputProps}
+					/>
+					<Button
+						className={classes.button}
+						variant="contained"
+						color="primary">
+						Sign In
+					</Button>
+				</>
+			)}
 		</DialogContent>
 	);
 });
